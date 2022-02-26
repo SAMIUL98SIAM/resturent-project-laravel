@@ -34,13 +34,14 @@ class ProfileController extends Controller
             'email' => $request->email,
         ]);
         // upload images
-        // $file = $request->file('image');
-        // @unlink('uploads/user_images'.$user->image);
-        // $filename = rand().date('YmdHi').$file->getClientOriginalName();
-        // $file->move(('uploads/user_images'),$filename);
-        // $user['image'] = $filename;
-        // $user->save();
-        // return with success msg
+        if($request->file('image')){
+            $file = $request->file('image');
+            @unlink(('uploads/user_images'.$user->image));
+            $filename = date('YmdHi').$file->getClientOriginalName();
+            $file->move(('uploads/user_images'),$filename);
+            $user['image'] = $filename;
+        }
+        $user->save();
         notify()->success('Profile Successfully Updated.', 'Updated');
         return redirect()->back();
     }

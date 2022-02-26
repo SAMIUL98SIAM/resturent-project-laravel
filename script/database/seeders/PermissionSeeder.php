@@ -107,6 +107,32 @@ class PermissionSeeder extends Seeder
         ]);
 
 
+        //Logo
+        $moduleAppUser = Module::updateOrCreate(['name' => 'Logo Management']);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppUser->id ,
+            'name' => 'Access Logo' ,
+            'slug' => 'admin.logos.index'
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppUser->id ,
+            'name' => 'Create Logo' ,
+            'slug' => 'admin.logos.create'
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppUser->id ,
+            'name' => 'Edit Logo' ,
+            'slug' => 'admin.logos.edit'
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppUser->id ,
+            'name' => 'Delete Logo' ,
+            'slug' => 'admin.logos.destroy'
+        ]);
+
         // Menu management
         $moduleAppMenu = Module::updateOrCreate(['name' => 'Menu Management']);
         Permission::updateOrCreate([

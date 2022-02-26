@@ -28,7 +28,7 @@ class MenuSeeder extends Seeder
             'type' => 'divider',
             'parent_id' => null,
             'order' => 1,
-            'divider_title' => 'Access Control'
+            'divider_title' => 'MENUS'
         ]);
 
         $menu->menuItems()->updateOrCreate([
@@ -38,13 +38,20 @@ class MenuSeeder extends Seeder
             'title' => 'Dashboard',
             'url' => "/admin/dashboard",
             'icon_class' => 'metismenu-icon pe-7s-rocket'
-            ]);
+        ]);
 
+        MenuItem::updateOrCreate([
+            'menu_id' => $menu->id,
+            'type' => 'divider',
+            'parent_id' => null,
+            'order' => 3,
+            'divider_title' => 'ACCESS CONTROL'
+        ]);
 
         $menu->menuItems()->updateOrCreate([
             'type' => 'item',
             'parent_id' => null,
-            'order' => 3,
+            'order' => 4,
             'title' => 'Roles',
             'url' => "/admin/roles",
             'icon_class' => 'metismenu-icon pe-7s-check'
@@ -53,17 +60,24 @@ class MenuSeeder extends Seeder
         $menu->menuItems()->updateOrCreate([
             'type' => 'item',
             'parent_id' => null,
-            'order' => 4,
+            'order' => 5,
             'title' => 'User',
             'url' => "/admin/users",
             'icon_class' => 'metismenu-icon pe-7s-users'
-            ]);
+        ]);
 
+        MenuItem::updateOrCreate([
+            'menu_id' => $menu->id,
+            'type' => 'divider',
+            'parent_id' => null,
+            'order' => 6,
+            'divider_title' => 'SYSTEM'
+        ]);
 
         $menu->menuItems()->updateOrCreate([
             'type' => 'item',
             'parent_id' => null,
-            'order' => 5,
+            'order' => 7,
             'title' => 'Menus',
             'url' => "/admin/menus",
             'icon_class' => 'metismenu-icon pe-7s-menu'
@@ -72,7 +86,7 @@ class MenuSeeder extends Seeder
         $menu->menuItems()->updateOrCreate([
             'type' => 'item',
             'parent_id' => null,
-            'order' => 6,
+            'order' => 8,
             'title' => 'Backup',
             'url' => "/admin/backups",
             'icon_class' => 'metismenu-icon pe-7s-cloud'
@@ -81,11 +95,30 @@ class MenuSeeder extends Seeder
         $menu->menuItems()->updateOrCreate([
             'type' => 'item',
             'parent_id' => null,
-            'order' => 10,
+            'order' => 9,
             'title' => 'Settings',
             'url' => "/admin/settings/general",
             'icon_class' => 'metismenu-icon pe-7s-settings'
         ]);
+
+        MenuItem::updateOrCreate([
+            'menu_id' => $menu->id,
+            'type' => 'divider',
+            'parent_id' => null,
+            'order' => 10,
+            'divider_title' => 'Setup Manegement'
+        ]);
+
+
+        $menu->menuItems()->updateOrCreate([
+            'type' => 'item',
+            'parent_id' => null,
+            'order' => 11,
+            'title' => 'Logos',
+            'url' => "/admin/logos",
+            'icon_class' => 'metismenu-icon pe-7s-list'
+        ]);
+
 
 
        //fontent header

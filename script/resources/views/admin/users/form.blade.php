@@ -119,8 +119,8 @@
 
                             <div class="form-group">
                                 <label for="avatar">Avatar</label>
-                                <input type="file" id="avatar" name="avatar" class="dropify form-control @error('avatar') is-invalid @enderror">
-                                @error('avatar')
+                                <input type="file" id="image" name="image" class="dropify form-control @error('image') is-invalid @enderror">
+                                @error('image')
                                 <p class="p-2">
                                     <span class="text-danger" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -129,7 +129,9 @@
                                 @enderror
                             </div>
 
-
+                            <div class="form-group" style="text-align: center;">
+                                <img id="showImage" src="{{!empty($user->image)?url('/uploads/user_images/'.$user->image):url('/uploads/no_image.jpg')}}" height="300px" width="300px;" alt="Card image cap"/>
+                            </div>
 
                             <div class="form-group">
                                 <div class="form-check form-switch">
@@ -183,6 +185,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js" integrity="sha512-8QFTrG0oeOiyWo/VM9Y8kgxdlCryqhIxVeRpWSezdRRAvarxVtwLnGroJgnVW9/XBRduxO/z1GblzPrMQoeuew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript">
         $('.dropify').dropify();
+    </script>
+     <script type="text/javascript">
+        $(document).ready(function(){
+            $('#image').change(function(e){
+                var reader = new FileReader();
+                reader.onload = function(e)
+                {
+                    $('#showImage').attr('src',e.target.result);
+                }
+                reader.readAsDataURL(e.target.files['0']);
+            });
+        });
     </script>
 @endpush
 

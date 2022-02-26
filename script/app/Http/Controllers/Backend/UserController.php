@@ -66,6 +66,13 @@ class UserController extends Controller
         //  if ($request->hasFile('avatar')) {
         //     $user->addMedia($request->avatar)->toMediaCollection('avatar');
         // }
+        if($request->file('image')){
+            $file = $request->file('image');
+            //@unlink(('uploads/user_images'.$user->image));
+            $filename = date('YmdHi').$file->getClientOriginalName();
+            $file->move(('uploads/user_images'),$filename);
+            $user['image'] = $filename;
+        }
         $user->save();
         notify()->success('User Successfully Added.', 'Added');
         return redirect()->route('admin.users.index');
@@ -114,7 +121,7 @@ class UserController extends Controller
                 'email'=>'required|string|email|max:255',
                 'role'=>'required',
                 'password'=>'nullable|string|confirmed|min:6',
-                'avatar'=>'nullable|image'
+
             ]
         );
 
@@ -130,6 +137,14 @@ class UserController extends Controller
         // if ($request->hasFile('avatar')) {
         //     $user->addMedia($request->avatar)->toMediaCollection('avatar');
         // }
+        if($request->file('image')){
+            $file = $request->file('image');
+            @unlink(('uploads/user_images'.$user->image));
+            $filename = date('YmdHi').$file->getClientOriginalName();
+            $file->move(('uploads/user_images'),$filename);
+            $user['image'] = $filename;
+        }
+        $user->save();
         notify()->success('User Successfully Updated.', 'Updated');
         return redirect()->route('admin.users.index');
     }
