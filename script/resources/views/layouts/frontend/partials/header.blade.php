@@ -2,7 +2,8 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="{{route('dashboard')}}">
-                <img src="{{asset('frontend/images/logo.png')}}" alt="" />
+                {{-- <img src="{{asset('frontend/images/logo.png')}}" alt="" /> --}}
+                <img src="{{!empty($logo->image)?url('uploads/logo_images/'.$logo->image):url('/uploads/no_image.jpg/')}}" alt="Logo Image" />
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>

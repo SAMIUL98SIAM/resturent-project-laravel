@@ -106,7 +106,7 @@ class MenuSeeder extends Seeder
             'type' => 'divider',
             'parent_id' => null,
             'order' => 10,
-            'divider_title' => 'Setup Manegement'
+            'divider_title' => 'SETUP MANAGEMENT'
         ]);
 
 
@@ -116,9 +116,17 @@ class MenuSeeder extends Seeder
             'order' => 11,
             'title' => 'Logos',
             'url' => "/admin/logos",
-            'icon_class' => 'metismenu-icon pe-7s-list'
+            'icon_class' => 'metismenu-icon pe-7s-book'
         ]);
 
+        $menu->menuItems()->updateOrCreate([
+            'type' => 'item',
+            'parent_id' => null,
+            'order' => 12,
+            'title' => 'Sliders',
+            'url' => "/admin/sliders",
+            'icon_class' => 'metismenu-icon pe-7s-book'
+        ]);
 
 
        //fontent header

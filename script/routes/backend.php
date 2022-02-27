@@ -11,8 +11,9 @@ use App\Http\Controllers\Backend\MenuController;
 use App\Http\Controllers\Backend\MenuBuilderController;
 use App\Http\Controllers\Backend\BackupController;
 use App\Http\Controllers\Backend\SettingController;
+use App\Http\Controllers\Backend\LogoController;
+use App\Http\Controllers\Backend\SliderController;
 
-use App\Http\Controllers\Backend\Menu\BackendSidebarMenuBuilderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,8 +50,18 @@ Route::resource('backups',BackupController::class)->only(['index','store','destr
 Route::get('backups/{file_name}',[BackupController::class,'download'])->name('backups.download');
 Route::delete('backups', [BackupController::class, 'clean'])->name('backups.clean');
 
+//Logo
+Route::resource('logos',LogoController::class)->except(['show']);
+
+//Slider
+Route::resource('sliders',SliderController::class)->except(['show']);
+Route::get('sliders/activate/{id}',[SliderController::class,'activate'])->name('sliders.activate');
+Route::get('sliders/unactivate/{id}',[SliderController::class,'unactivate'])->name('sliders.unactivate');
+
+
 //Menu
 Route::resource('menus',MenuController::class)->except(['show']);
+
 
 Route::group(['as'=>'menus.','prefix'=>'menus/{id}'],function(){
     Route::post('order',[MenuBuilderController::class,'order'])->name('order');

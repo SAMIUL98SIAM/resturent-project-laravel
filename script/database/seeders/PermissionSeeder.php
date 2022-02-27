@@ -133,6 +133,47 @@ class PermissionSeeder extends Seeder
             'slug' => 'admin.logos.destroy'
         ]);
 
+
+        //Slider
+        $moduleAppUser = Module::updateOrCreate(['name' => 'Slider Management']);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppUser->id ,
+            'name' => 'Access Slider' ,
+            'slug' => 'admin.sliders.index'
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppUser->id ,
+            'name' => 'Create Slider' ,
+            'slug' => 'admin.sliders.create'
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppUser->id ,
+            'name' => 'Edit Slider' ,
+            'slug' => 'admin.sliders.edit'
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppUser->id ,
+            'name' => 'Delete Slider' ,
+            'slug' => 'admin.sliders.destroy'
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppUser->id ,
+            'name' => 'Unactivate Slider' ,
+            'slug' => 'admin.sliders.unactivate'
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppUser->id ,
+            'name' => 'Activate Slider' ,
+            'slug' => 'admin.sliders.activate'
+        ]);
+
+
+
         // Menu management
         $moduleAppMenu = Module::updateOrCreate(['name' => 'Menu Management']);
         Permission::updateOrCreate([

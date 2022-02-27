@@ -48,8 +48,8 @@ class UserController extends Controller
                 'name'=> 'required|string|max:255',
                 'email'=>'required|string|email|max:255|unique:users',
                 'role'=>'required',
-                'password'=>'required|string|confirmed|min:6'
-
+                'password'=>'required|string|confirmed|min:6',
+                'image'=>'required|image'
             ]
         );
 
