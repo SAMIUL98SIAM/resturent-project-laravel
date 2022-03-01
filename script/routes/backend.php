@@ -10,10 +10,11 @@ use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\MenuController;
 use App\Http\Controllers\Backend\MenuBuilderController;
 use App\Http\Controllers\Backend\BackupController;
+use App\Http\Controllers\Backend\GalleryController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\LogoController;
 use App\Http\Controllers\Backend\SliderController;
-
+use App\Http\Controllers\Backend\StuffController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,10 +60,17 @@ Route::get('sliders/activate/{id}',[SliderController::class,'activate'])->name('
 Route::get('sliders/unactivate/{id}',[SliderController::class,'unactivate'])->name('sliders.unactivate');
 
 
+//Gallery
+Route::resource('galleries',GalleryController::class)->except(['show']);
+
+//Stuff
+Route::resource('stuffs',StuffController::class);
+
+
 //Menu
 Route::resource('menus',MenuController::class)->except(['show']);
 
-
+//Menu Items
 Route::group(['as'=>'menus.','prefix'=>'menus/{id}'],function(){
     Route::post('order',[MenuBuilderController::class,'order'])->name('order');
     Route::get('builder',[MenuBuilderController::class,'index'])->name('builder');
@@ -76,7 +84,7 @@ Route::group(['as'=>'menus.','prefix'=>'menus/{id}'],function(){
     });
 });
 
-
+//Setting
 Route::group(['as'=>'settings.','prefix'=>'settings'],function()
 {
     Route::get('/general', [SettingController::class, 'general'])->name('general');

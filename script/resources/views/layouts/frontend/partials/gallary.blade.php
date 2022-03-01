@@ -10,37 +10,15 @@
         </div>
         <div class="tz-gallery">
             <div class="row">
+                @foreach ($galleries as $gallery)
                 <div class="col-sm-12 col-md-4 col-lg-4">
-                    <a class="lightbox" href="{{asset('frontend/images/gallery-img-01.jpg')}}">
-                        <img class="img-fluid" src="{{asset('frontend/images/gallery-img-01.jpg')}}" alt="Gallery Images">
+                    <a class="lightbox" href="{{!empty($gallery->image)?url('uploads/gallery_images/'.$gallery->image):url('/uploads/no_image.jpg/')}}">
+                        <img class="img-fluid" src="{{!empty($gallery->image)?url('uploads/gallery_images/'.$gallery->image):url('/uploads/no_image.jpg/')}}" alt="Gallery Images">
                     </a>
                 </div>
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <a class="lightbox" href="{{asset('frontend/images/gallery-img-02.jpg')}}">
-                        <img class="img-fluid" src="{{asset('frontend/images/gallery-img-02.jpg')}}" alt="Gallery Images">
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <a class="lightbox" href="{{asset('frontend/images/gallery-img-03.jpg')}}">
-                        <img class="img-fluid" src="{{asset('frontend/images/gallery-img-03.jpg')}}" alt="Gallery Images">
-                    </a>
-                </div>
-                <div class="col-sm-12 col-md-4 col-lg-4">
-                    <a class="lightbox" href="{{asset('frontend/images/gallery-img-04.jpg')}}">
-                        <img class="img-fluid" src="{{asset('frontend/images/gallery-img-04.jpg')}}" alt="Gallery Images">
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <a class="lightbox" href="{{asset('frontend/images/gallery-img-05.jpg')}}">
-                        <img class="img-fluid" src="{{asset('frontend/images/gallery-img-05.jpg')}}" alt="Gallery Images">
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <a class="lightbox" href="{{asset('frontend/images/gallery-img-06.jpg')}}">
-                        <img class="img-fluid" src="{{asset('frontend/images/gallery-img-06.jpg')}}" alt="Gallery Images">
-                    </a>
-                </div>
+                @endforeach
             </div>
+            {{$galleries->links()}}
         </div>
     </div>
 </div>

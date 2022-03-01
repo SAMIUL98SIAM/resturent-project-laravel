@@ -44,95 +44,28 @@
                     </div>
                 </div>
 
+                @foreach ($stuffs as $stuff)
                 <div class="col-md-4 col-sm-6">
                     <div class="our-team">
                         <div class="pic">
-                            <img src="{{asset('frontend/images/stuff-img-02.jpg')}}">
+                            <img src="{{!empty($stuff->image) ? url('uploads/stuff_images/'.$stuff->image):url('/uploads/no_image.jpg')}}">
                             <ul class="social">
-                                <li><a href="#" class="fa fa-facebook"></a></li>
-                                <li><a href="#" class="fa fa-google-plus"></a></li>
-                                <li><a href="#" class="fa fa-instagram"></a></li>
-                                <li><a href="#" class="fa fa-linkedin"></a></li>
+                                <li><a href="{{$stuff->facebook_link}}" class="fa fa-facebook"></a></li>
+                                <li><a href="{{$stuff->google_link}}" class="fa fa-google-plus"></a></li>
+                                <li><a href="{{$stuff->instagram_link}}" class="fa fa-instagram"></a></li>
+                                <li><a href="{{$stuff->linkedin_link}}" class="fa fa-linkedin"></a></li>
                             </ul>
                         </div>
                         <div class="team-content">
-                            <h3 class="title">Kristiana</h3>
-                            <span class="post">Web Designer</span>
+                            <h3 class="title">{{$stuff->name}}</h3>
+                            <span class="post">{{$stuff->stuffposition->sp_name}}</span>
                         </div>
                     </div>
                 </div>
+                @endforeach
 
-                <div class="col-md-4 col-sm-6">
-                    <div class="our-team">
-                        <div class="pic">
-                            <img src="{{asset('frontend/images/stuff-img-03.jpg')}}">
-                            <ul class="social">
-                                <li><a href="#" class="fa fa-facebook"></a></li>
-                                <li><a href="#" class="fa fa-google-plus"></a></li>
-                                <li><a href="#" class="fa fa-instagram"></a></li>
-                                <li><a href="#" class="fa fa-linkedin"></a></li>
-                            </ul>
-                        </div>
-                        <div class="team-content">
-                            <h3 class="title">Steve Thomas</h3>
-                            <span class="post">Web Developer</span>
-                        </div>
-                    </div>
-                </div>
 
-				<div class="col-md-4 col-sm-6">
-                    <div class="our-team">
-                        <div class="pic">
-                            <img src="{{asset('frontend/images/stuff-img-04.jpg')}}">
-                            <ul class="social">
-                                <li><a href="#" class="fa fa-facebook"></a></li>
-                                <li><a href="#" class="fa fa-google-plus"></a></li>
-                                <li><a href="#" class="fa fa-instagram"></a></li>
-                                <li><a href="#" class="fa fa-linkedin"></a></li>
-                            </ul>
-                        </div>
-                        <div class="team-content">
-                            <h3 class="title">Williamson</h3>
-                            <span class="post">Web Developer</span>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-md-4 col-sm-6">
-                    <div class="our-team">
-                        <div class="pic">
-                            <img src="{{asset('frontend/images/stuff-img-05.jpg')}}">
-                            <ul class="social">
-                                <li><a href="#" class="fa fa-facebook"></a></li>
-                                <li><a href="#" class="fa fa-google-plus"></a></li>
-                                <li><a href="#" class="fa fa-instagram"></a></li>
-                                <li><a href="#" class="fa fa-linkedin"></a></li>
-                            </ul>
-                        </div>
-                        <div class="team-content">
-                            <h3 class="title">Kristiana</h3>
-                            <span class="post">Web Designer</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-sm-6">
-                    <div class="our-team">
-                        <div class="pic">
-                            <img src="{{asset('frontend/images/stuff-img-06.jpg')}}">
-                            <ul class="social">
-                                <li><a href="#" class="fa fa-facebook"></a></li>
-                                <li><a href="#" class="fa fa-google-plus"></a></li>
-                                <li><a href="#" class="fa fa-instagram"></a></li>
-                                <li><a href="#" class="fa fa-linkedin"></a></li>
-                            </ul>
-                        </div>
-                        <div class="team-content">
-                            <h3 class="title">Steve Thomas</h3>
-                            <span class="post">Web Developer</span>
-                        </div>
-                    </div>
-                </div>
             </div>
 		</div>
 	</div>

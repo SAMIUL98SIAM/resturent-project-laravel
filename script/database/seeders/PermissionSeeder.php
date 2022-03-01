@@ -173,6 +173,60 @@ class PermissionSeeder extends Seeder
         ]);
 
 
+       //Gallery
+       $moduleAppUser = Module::updateOrCreate(['name' => 'Gallery Management']);
+       Permission::updateOrCreate([
+           'module_id' => $moduleAppUser->id ,
+           'name' => 'Access Gallery' ,
+           'slug' => 'admin.galleries.index'
+       ]);
+
+       Permission::updateOrCreate([
+           'module_id' => $moduleAppUser->id ,
+           'name' => 'Create Gallery' ,
+           'slug' => 'admin.galleries.create'
+       ]);
+
+       Permission::updateOrCreate([
+           'module_id' => $moduleAppUser->id ,
+           'name' => 'Edit Gallery' ,
+           'slug' => 'admin.galleries.edit'
+       ]);
+
+       Permission::updateOrCreate([
+           'module_id' => $moduleAppUser->id ,
+           'name' => 'Delete Gallery' ,
+           'slug' => 'admin.galleries.destroy'
+       ]);
+
+
+
+       //Stuff
+       $moduleAppUser = Module::updateOrCreate(['name' => 'Stuff Management']);
+       Permission::updateOrCreate([
+           'module_id' => $moduleAppUser->id ,
+           'name' => 'Access Stuff' ,
+           'slug' => 'admin.stuffs.index'
+       ]);
+
+       Permission::updateOrCreate([
+           'module_id' => $moduleAppUser->id ,
+           'name' => 'Create Stuff' ,
+           'slug' => 'admin.stuffs.create'
+       ]);
+
+       Permission::updateOrCreate([
+           'module_id' => $moduleAppUser->id ,
+           'name' => 'Edit Stuff' ,
+           'slug' => 'admin.stuffs.edit'
+       ]);
+
+       Permission::updateOrCreate([
+           'module_id' => $moduleAppUser->id ,
+           'name' => 'Delete Stuff' ,
+           'slug' => 'admin.stuffs.destroy'
+       ]);
+
 
         // Menu management
         $moduleAppMenu = Module::updateOrCreate(['name' => 'Menu Management']);

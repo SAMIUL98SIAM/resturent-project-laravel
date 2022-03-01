@@ -116,7 +116,7 @@ class MenuSeeder extends Seeder
             'order' => 11,
             'title' => 'Logos',
             'url' => "/admin/logos",
-            'icon_class' => 'metismenu-icon pe-7s-book'
+            'icon_class' => 'metismenu-icon pe-7s-diamond'
         ]);
 
         $menu->menuItems()->updateOrCreate([
@@ -125,7 +125,25 @@ class MenuSeeder extends Seeder
             'order' => 12,
             'title' => 'Sliders',
             'url' => "/admin/sliders",
-            'icon_class' => 'metismenu-icon pe-7s-book'
+            'icon_class' => 'metismenu-icon pe-7s-diamond'
+        ]);
+
+        $menu->menuItems()->updateOrCreate([
+            'type' => 'item',
+            'parent_id' => null,
+            'order' => 13,
+            'title' => 'Galleries',
+            'url' => "/admin/galleries",
+            'icon_class' => 'metismenu-icon pe-7s-album'
+        ]);
+
+        $menu->menuItems()->updateOrCreate([
+            'type' => 'item',
+            'parent_id' => null,
+            'order' => 14,
+            'title' => 'Stuffs',
+            'url' => "/admin/stuffs",
+            'icon_class' => 'metismenu-icon pe-7s-users'
         ]);
 
 
@@ -191,7 +209,7 @@ class MenuSeeder extends Seeder
             'parent_id' => null,
             'order' => 7,
             'title' => 'Gallery',
-            'url' => "/gallary"
+            'url' => "/gallery"
         ]);
 
 

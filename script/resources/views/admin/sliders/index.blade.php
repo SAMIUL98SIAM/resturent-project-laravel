@@ -48,9 +48,9 @@
                             <td width="30%" class="text-center">
                                 <a title="Edit" href="{{route('admin.sliders.edit',$slider->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> <span>Edit</span></a>
                                 @if ($slider->status == 1)
-                                <a href="{{route('admin.sliders.unactivate',$slider->id)}}" class="btn btn-success">Unactivate</a>
+                                <a href="{{route('admin.sliders.unactivate',$slider->id)}}" class="btn btn-sm btn-success">Unactivate</a>
                                 @else
-                                <a href="{{route('admin.sliders.activate',$slider->id)}}" class="btn btn-warning">Activate</a>
+                                <a href="{{route('admin.sliders.activate',$slider->id)}}" class="btn btn-sm btn-warning">Activate</a>
                                 @endif
                                 <button type="button" class="btn btn-danger btn-sm"
                                             onclick="deleteData({{ $slider->id }})">
