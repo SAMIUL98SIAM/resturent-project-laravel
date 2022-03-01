@@ -26,24 +26,6 @@
 				</div>
 			</div>
 			<div class="row">
-                <div class="col-md-4 col-sm-6">
-                    <div class="our-team">
-                        <div class="pic">
-                            <img src="{{asset('frontend/images/stuff-img-01.jpg')}}">
-                            <ul class="social">
-                                <li><a href="#" class="fa fa-facebook"></a></li>
-                                <li><a href="#" class="fa fa-google-plus"></a></li>
-                                <li><a href="#" class="fa fa-instagram"></a></li>
-                                <li><a href="#" class="fa fa-linkedin"></a></li>
-                            </ul>
-                        </div>
-                        <div class="team-content">
-                            <h3 class="title">Williamson</h3>
-                            <span class="post">Web Developer</span>
-                        </div>
-                    </div>
-                </div>
-
                 @foreach ($stuffs as $stuff)
                 <div class="col-md-4 col-sm-6">
                     <div class="our-team">
@@ -63,10 +45,8 @@
                     </div>
                 </div>
                 @endforeach
-
-
-
             </div>
+            {{$stuffs->links()}}
 		</div>
 	</div>
 	<!-- End Stuff -->
