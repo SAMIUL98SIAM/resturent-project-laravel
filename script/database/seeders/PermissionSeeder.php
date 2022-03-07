@@ -107,94 +107,95 @@ class PermissionSeeder extends Seeder
         ]);
 
 
+
         //Logo
-        $moduleAppUser = Module::updateOrCreate(['name' => 'Logo Management']);
+        $moduleAppLogo = Module::updateOrCreate(['name' => 'Logo Management']);
         Permission::updateOrCreate([
-            'module_id' => $moduleAppUser->id ,
+            'module_id' => $moduleAppLogo->id ,
             'name' => 'Access Logo' ,
             'slug' => 'admin.logos.index'
         ]);
 
         Permission::updateOrCreate([
-            'module_id' => $moduleAppUser->id ,
+            'module_id' => $moduleAppLogo->id ,
             'name' => 'Create Logo' ,
             'slug' => 'admin.logos.create'
         ]);
 
         Permission::updateOrCreate([
-            'module_id' => $moduleAppUser->id ,
+            'module_id' => $moduleAppLogo->id ,
             'name' => 'Edit Logo' ,
             'slug' => 'admin.logos.edit'
         ]);
 
         Permission::updateOrCreate([
-            'module_id' => $moduleAppUser->id ,
+            'module_id' => $moduleAppLogo->id ,
             'name' => 'Delete Logo' ,
             'slug' => 'admin.logos.destroy'
         ]);
 
 
         //Slider
-        $moduleAppUser = Module::updateOrCreate(['name' => 'Slider Management']);
+        $moduleAppSlider = Module::updateOrCreate(['name' => 'Slider Management']);
         Permission::updateOrCreate([
-            'module_id' => $moduleAppUser->id ,
+            'module_id' => $moduleAppSlider->id ,
             'name' => 'Access Slider' ,
             'slug' => 'admin.sliders.index'
         ]);
 
         Permission::updateOrCreate([
-            'module_id' => $moduleAppUser->id ,
+            'module_id' => $moduleAppSlider->id ,
             'name' => 'Create Slider' ,
             'slug' => 'admin.sliders.create'
         ]);
 
         Permission::updateOrCreate([
-            'module_id' => $moduleAppUser->id ,
+            'module_id' => $moduleAppSlider->id ,
             'name' => 'Edit Slider' ,
             'slug' => 'admin.sliders.edit'
         ]);
 
         Permission::updateOrCreate([
-            'module_id' => $moduleAppUser->id ,
+            'module_id' => $moduleAppSlider->id ,
             'name' => 'Delete Slider' ,
             'slug' => 'admin.sliders.destroy'
         ]);
 
         Permission::updateOrCreate([
-            'module_id' => $moduleAppUser->id ,
+            'module_id' => $moduleAppSlider->id ,
             'name' => 'Unactivate Slider' ,
             'slug' => 'admin.sliders.unactivate'
         ]);
 
         Permission::updateOrCreate([
-            'module_id' => $moduleAppUser->id ,
+            'module_id' => $moduleAppSlider->id ,
             'name' => 'Activate Slider' ,
             'slug' => 'admin.sliders.activate'
         ]);
 
 
        //Gallery
-       $moduleAppUser = Module::updateOrCreate(['name' => 'Gallery Management']);
+       $moduleAppGallery = Module::updateOrCreate(['name' => 'Gallery Management']);
        Permission::updateOrCreate([
-           'module_id' => $moduleAppUser->id ,
+           'module_id' => $moduleAppGallery->id ,
            'name' => 'Access Gallery' ,
            'slug' => 'admin.galleries.index'
        ]);
 
        Permission::updateOrCreate([
-           'module_id' => $moduleAppUser->id ,
+           'module_id' => $moduleAppGallery->id ,
            'name' => 'Create Gallery' ,
            'slug' => 'admin.galleries.create'
        ]);
 
        Permission::updateOrCreate([
-           'module_id' => $moduleAppUser->id ,
+           'module_id' => $moduleAppGallery->id ,
            'name' => 'Edit Gallery' ,
            'slug' => 'admin.galleries.edit'
        ]);
 
        Permission::updateOrCreate([
-           'module_id' => $moduleAppUser->id ,
+           'module_id' => $moduleAppGallery->id ,
            'name' => 'Delete Gallery' ,
            'slug' => 'admin.galleries.destroy'
        ]);
@@ -202,27 +203,27 @@ class PermissionSeeder extends Seeder
 
 
        //Stuff
-       $moduleAppUser = Module::updateOrCreate(['name' => 'Stuff Management']);
+       $moduleAppStuff = Module::updateOrCreate(['name' => 'Stuff Management']);
        Permission::updateOrCreate([
-           'module_id' => $moduleAppUser->id ,
+           'module_id' => $moduleAppStuff->id ,
            'name' => 'Access Stuff' ,
            'slug' => 'admin.stuffs.index'
        ]);
 
        Permission::updateOrCreate([
-           'module_id' => $moduleAppUser->id ,
+           'module_id' => $moduleAppStuff->id ,
            'name' => 'Create Stuff' ,
            'slug' => 'admin.stuffs.create'
        ]);
 
        Permission::updateOrCreate([
-           'module_id' => $moduleAppUser->id ,
+           'module_id' => $moduleAppStuff->id ,
            'name' => 'Edit Stuff' ,
            'slug' => 'admin.stuffs.edit'
        ]);
 
        Permission::updateOrCreate([
-           'module_id' => $moduleAppUser->id ,
+           'module_id' => $moduleAppStuff->id ,
            'name' => 'Delete Stuff' ,
            'slug' => 'admin.stuffs.destroy'
        ]);
@@ -258,5 +259,60 @@ class PermissionSeeder extends Seeder
             'slug' => 'admin.menus.destroy',
         ]);
 
+
+        //Sepcial Menu management
+        $moduleAppFoodSpecialMenu = Module::updateOrCreate(['name' => 'Special Food Menu Management']);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppFoodSpecialMenu->id ,
+            'name' => 'Access Special Menu' ,
+            'slug' => 'admin.food.special-menus.index'
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppFoodSpecialMenu->id ,
+            'name' => 'Create Special Menu' ,
+            'slug' => 'admin.food.special-menus.create'
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppFoodSpecialMenu->id ,
+            'name' => 'Edit Special Menu' ,
+            'slug' => 'admin.food.special-menus.edit'
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppFoodSpecialMenu->id ,
+            'name' => 'Delete Special Menu' ,
+            'slug' => 'admin.food.special-menus.destroy'
+        ]);
+
+
+        //Sepcial Menu Item management
+        $moduleAppFoodSpecialItem = Module::updateOrCreate(['name' => 'Special Food Item Management']);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppFoodSpecialItem->id ,
+            'name' => 'Access Special Item' ,
+            'slug' => 'admin.food.special-items.index'
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppFoodSpecialItem->id ,
+            'name' => 'Create Special Item' ,
+            'slug' => 'admin.food.special-items.create'
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppFoodSpecialItem->id ,
+            'name' => 'Edit Special Item' ,
+            'slug' => 'admin.food.special-items.edit'
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppFoodSpecialItem->id ,
+            'name' => 'Delete Special Item' ,
+            'slug' => 'admin.food.special-items.destroy'
+        ]);
     }
 }

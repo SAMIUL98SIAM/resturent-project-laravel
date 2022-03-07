@@ -147,6 +147,24 @@ class MenuSeeder extends Seeder
         ]);
 
 
+        $menu->menuItems()->updateOrCreate([
+            'type' => 'item',
+            'parent_id' => null,
+            'order' => 15,
+            'title' => 'Special Menus',
+            'url' => "/admin/food/special-menus",
+            'icon_class' => 'metismenu-icon pe-7s-foods'
+        ]);
+
+        $menu->menuItems()->updateOrCreate([
+            'type' => 'item',
+            'parent_id' => null,
+            'order' => 16,
+            'title' => 'Special Items',
+            'url' => "/admin/food/special-items",
+            'icon_class' => 'metismenu-icon pe-7s-foods'
+        ]);
+
        //fontent header
 
         $frontendMenu = Menu::updateOrCreate([

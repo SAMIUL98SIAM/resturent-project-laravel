@@ -15,6 +15,9 @@ use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\LogoController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\StuffController;
+use App\Http\Controllers\Backend\FoodMenu\SpecialMenuController;
+use App\Http\Controllers\Backend\FoodMenu\SpecialItemController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +72,13 @@ Route::resource('stuffs',StuffController::class);
 
 //Menu
 Route::resource('menus',MenuController::class)->except(['show']);
+
+Route::group(['as'=>'food.','prefix'=>'food'],function(){
+    Route::resource('special-menus',SpecialMenuController::class)->except(['show']);
+    Route::resource('special-items',SpecialItemController::class)->except(['show']);
+});
+
+
 
 //Menu Items
 Route::group(['as'=>'menus.','prefix'=>'menus/{id}'],function(){
