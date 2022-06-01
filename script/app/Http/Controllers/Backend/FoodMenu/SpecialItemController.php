@@ -48,19 +48,16 @@ class SpecialItemController extends Controller
         SpecialItem::create([
             'name'=> $request->name ,
             'slug'=> Str::slug($request->name),
-            // 'description'=> $request->description,
-            // 'price'=> $request->price ,
         ]);
 
 
-        // if($request->file('image')){
-        //     $file = $request->file('image');
-        //     //@unlink(('uploads/user_images'.$user->image));
-        //     $filename = date('YmdHi').$file->getClientOriginalName();
-        //     $file->move(('uploads/gallery_images'),$filename);
-        //     $gallery['image'] = $filename;
-        // }
-        // $gallery->save();
+        if($request->file('image')){
+            $file = $request->file('image');
+            $filename = date('YmdHi').$file->getClientOriginalName();
+            $file->move(('uploads/special_item_images'),$filename);
+            $specialItem['image'] = $filename;
+        }
+        $specialItem->save();
 
         notify()->success('Special Item Successfully Added.', 'Added');
         return redirect()->route('admin.food.special-items.index');
@@ -105,9 +102,16 @@ class SpecialItemController extends Controller
         $specialItem->update([
             'name'=> $request->name ,
             'slug'=> Str::slug($request->name),
-            // 'description'=> $request->description,
-            // 'price'=> $request->price ,
         ]);
+
+        if($request->file('image')){
+            $file = $request->file('image');
+            @unlink(('uploads/special_item_images'.$specialItem->image));
+            $filename = date('YmdHi').$file->getClientOriginalName();
+            $file->move(('uploads/special_item_images'),$filename);
+            $specialItem['image'] = $filename;
+        }
+        $specialItem->save();
         notify()->success('Special Item Successfully Updated.', 'Updated');
         return redirect()->route('admin.food.special-items.index');
     }

@@ -288,7 +288,7 @@ class PermissionSeeder extends Seeder
         ]);
 
 
-        //Sepcial Menu Item management
+        //Sepcial Item management
         $moduleAppFoodSpecialItem = Module::updateOrCreate(['name' => 'Special Food Item Management']);
 
         Permission::updateOrCreate([
@@ -313,6 +313,35 @@ class PermissionSeeder extends Seeder
             'module_id' => $moduleAppFoodSpecialItem->id ,
             'name' => 'Delete Special Item' ,
             'slug' => 'admin.food.special-items.destroy'
+        ]);
+
+
+
+        //Assign Menu Item management
+        $moduleAppAssignMenuItem = Module::updateOrCreate(['name' => 'Special Food Item Management']);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppAssignMenuItem->id ,
+            'name' => 'Access Assign Menu Item' ,
+            'slug' => 'admin.food.assign-menu-items.index'
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppAssignMenuItem->id ,
+            'name' => 'Create Assign Menu Item' ,
+            'slug' => 'admin.food.assign-menu-items.create'
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppAssignMenuItem->id ,
+            'name' => 'Edit Assign Menu Item' ,
+            'slug' => 'admin.food.assign-menu-items.edit'
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppAssignMenuItem->id ,
+            'name' => 'Delete Assign Menu Item' ,
+            'slug' => 'admin.food.assign-menu-items.destroy'
         ]);
     }
 }

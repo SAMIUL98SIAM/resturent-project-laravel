@@ -19,7 +19,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="main-card mb-3 card">
-            <form method="POST" action="{{isset($specialItem)?route('admin.food.special-items.update',$specialItem->id):route('admin.food.special-items.store')}}">
+            <form method="POST" action="{{isset($specialItem)?route('admin.food.special-items.update',$specialItem->id):route('admin.food.special-items.store')}}" enctype="multipart/form-data">
             @csrf
             @isset($specialItem)
                 @method('PUT')
@@ -37,6 +37,22 @@
                         </span>
                     </p>
                     @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="image">Image</label>
+                    <input type="file" id="image" name="image" class="form-control form-control-sm @error('image') is-invalid @enderror" style="margin-top: -9px;">
+                    @error('image')
+                    <p class="p-2">
+                        <span class="text-danger" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    </p>
+                    @enderror
+                </div>
+
+                <div class="form-group" style="text-align: center;">
+                    <img id="showImage" src="{{!empty($specialItem->image)?url('/uploads/special_item_images/'.$specialItem->image):url('/uploads/no_image.jpg')}}" height="300px" width="300px;" alt="Card image cap"/>
                 </div>
 
 
@@ -58,13 +74,17 @@
 @endsection
 
 @push('js')
-    <script type="text/javascript">
-       function toggle(source) {
-            checkboxes = document.getElementsByName('permissions[]');
-            for(var i=0, n=checkboxes.length;i<n;i++) {
-                checkboxes[i].checked = source.checked;
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#image').change(function(e){
+            var reader = new FileReader();
+            reader.onload = function(e)
+            {
+                $('#showImage').attr('src',e.target.result);
             }
-        }
-    </script>
+            reader.readAsDataURL(e.target.files['0']);
+        });
+    });
+</script>
 @endpush
 

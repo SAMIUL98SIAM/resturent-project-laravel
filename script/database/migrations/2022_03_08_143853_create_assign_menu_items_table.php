@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSpecialItemsTable extends Migration
+class CreateAssignMenuItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateSpecialItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('special_items', function (Blueprint $table) {
+        Schema::create('assign_menu_items', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('slug')->unique();
-            $table->string('image')->nullable();
+            $table->integer('special_menu_id');
+            $table->integer('special_item_id');
+            $table->longText('description')->nullable();
+            $table->double('price')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateSpecialItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('special_items');
+        Schema::dropIfExists('assign_menu_items');
     }
 }

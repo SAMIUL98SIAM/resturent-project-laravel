@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\MenuController;
 use App\Http\Controllers\Backend\MenuBuilderController;
 use App\Http\Controllers\Backend\BackupController;
+use App\Http\Controllers\Backend\FoodMenu\AssignMenuItemController;
 use App\Http\Controllers\Backend\GalleryController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\LogoController;
@@ -17,7 +18,7 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\StuffController;
 use App\Http\Controllers\Backend\FoodMenu\SpecialMenuController;
 use App\Http\Controllers\Backend\FoodMenu\SpecialItemController;
-
+use App\Models\FoodMenu\AssignMenuItem;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,6 +77,7 @@ Route::resource('menus',MenuController::class)->except(['show']);
 Route::group(['as'=>'food.','prefix'=>'food'],function(){
     Route::resource('special-menus',SpecialMenuController::class)->except(['show']);
     Route::resource('special-items',SpecialItemController::class)->except(['show']);
+    Route::resource('assign-menu-items',AssignMenuItemController::class)->except(['show']);
 });
 
 

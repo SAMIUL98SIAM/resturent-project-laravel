@@ -14,10 +14,10 @@
                 <i class="pe-7s-check icon-gradient bg-mean-fruit">
                 </i>
             </div>
-            <div>Roles</div>
+            <div>Assign Special Items</div>
         </div>
         <div class="page-title-actions">
-            <a href="{{route('admin.food.special-items.create')}}" type="button" class="btn-shadow mr-3 btn btn-primary"><i class="fa fa-plus"></i> Create Special Item</a>
+            <a href="{{route('admin.food.assign-menu-items.create')}}" type="button" class="btn-shadow mr-3 btn btn-primary"><i class="fa fa-plus"></i> Create Special Item</a>
         </div>
     </div>
 </div>
@@ -30,26 +30,25 @@
                     <thead>
                         <tr>
                             <th class="text-center">#</th>
-                            <th class="text-center">Name</th>
-                            <th class="text-center">Image</th>
+                            <th class="text-center">Special Menu Name</th>
                             <th class="text-center">Created At</th>
                             <th class="text-center">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($specialItems as $key=>$specialItem)
+                        @foreach ($assignMenuItems as $key=>$assignMenuItem)
                         <tr>
                             <td class="text-center text-muted">{{$key+1}}</td>
 
-                            <td class="text-center">{{$specialItem->name}}</td>
-                            <td><img src="{{!empty($specialItem->image) ? url('uploads/special_item_images/'.$specialItem->image):url('/uploads/no_image.jpg')}}" width="120px" height="130px"></td>
-                            <td class="text-center">{{$specialItem->created_at->diffForHumans()}}</td>
-                            <td class="text-center">
-                                <a href="{{route('admin.food.special-items.edit',$specialItem->id)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"><span> Edit</span></i></a>
+                            <td class="text-center">{{$assignMenuItem->special_menu->name}}</td>
 
-                                <button type="button" class="btn btn-danger btn-sm"onclick="deleteData({{ $specialItem->id }})"><i class="fas fa-trash-alt"></i><span>Delete</span></button>
-                                <form id="delete-form-{{ $specialItem->id }}"
-                                action="{{ route('admin.food.special-items.destroy',$specialItem->id) }}" method="POST"
+                            <td class="text-center">{{$assignMenuItem->created_at->diffForHumans()}}</td>
+                            <td class="text-center">
+                                <a href="{{route('admin.food.special-items.edit',$assignMenuItem->special_menu_id)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"><span> Edit</span></i></a>
+
+                                <button type="button" class="btn btn-danger btn-sm"onclick="deleteData({{ $assignMenuItem->special_menu_id }})"><i class="fas fa-trash-alt"></i><span>Delete</span></button>
+                                <form id="delete-form-{{ $assignMenuItem->special_menu_id }}"
+                                action="{{ route('admin.food.special-items.destroy',$assignMenuItem->special_menu_id) }}" method="POST"
                                 style="display: none;">
                                 @csrf()
                                 @method('DELETE')

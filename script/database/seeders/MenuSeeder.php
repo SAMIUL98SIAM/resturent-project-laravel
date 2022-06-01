@@ -153,7 +153,7 @@ class MenuSeeder extends Seeder
             'order' => 15,
             'title' => 'Special Menus',
             'url' => "/admin/food/special-menus",
-            'icon_class' => 'metismenu-icon pe-7s-foods'
+            'icon_class' => 'metismenu-icon pe-7s-burger'
         ]);
 
         $menu->menuItems()->updateOrCreate([
@@ -162,8 +162,24 @@ class MenuSeeder extends Seeder
             'order' => 16,
             'title' => 'Special Items',
             'url' => "/admin/food/special-items",
-            'icon_class' => 'metismenu-icon pe-7s-foods'
+            'icon_class' => 'metismenu-icon pe-7s-burger'
         ]);
+
+
+        $menu->menuItems()->updateOrCreate([
+            'type' => 'item',
+            'parent_id' => null,
+            'order' => 17,
+            'title' => 'Assign Special Menu Items',
+            'url' => "/admin/food/assign-menu-items",
+            'icon_class' => 'metismenu-icon pe-7s-burger'
+        ]);
+
+
+
+
+
+
 
        //fontent header
 
