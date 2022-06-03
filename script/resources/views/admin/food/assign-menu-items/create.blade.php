@@ -11,7 +11,7 @@
                 <i class="pe-7s-check icon-gradient bg-mean-fruit">
                 </i>
             </div>
-            <div><div>Create  Special Menu Item</div></div>
+            <div><div>{{ isset($assignMenuItem) ? 'Edit' : 'Create New' }} Special Menu Item</div></div>
         </div>
         <div class="page-title-actions">
             <a href="{{route('admin.food.assign-menu-items.index')}}" type="button" class="btn-shadow mr-3 btn btn-primary"><i class="fas fa-backspace"></i> Back to list</a>
@@ -27,7 +27,7 @@
                 <div class="add_item">
                     <div class="card-body">
                         <h5 class="card-title">Manage Special Menus</h5>
-                        <div class="form-group col-md-2">
+                        <div class="form-group col-md-4">
                             <label for="name">Name</label>
                             <select name="special_menu_id" class="js-example-basic-single form-control @error('special_menu_id') is-invalid @enderror">
                                 <option value="">Select Special Menu</option>
@@ -47,34 +47,34 @@
                         <div class="form-row">
                             <div class="form-group col-md-2">
                                 <lebel>Special Items</lebel>
-                                <select name="special_item_id[]" class="js-example-basic-single form-control-sm">
+                                <select name="special_item_id[]" class="js-example-basic-single form-control-sm" required>
                                     <option value="">Select Special Items</option>
                                     @foreach ($specialItems as $specialItem)
                                     <option value="{{$specialItem->id}}">{{$specialItem->name}}</option>
                                 @endforeach
                                 </select>
                             </div>
-                            <div class="form-group col-md-1">
-                                <lebel>Price</lebel>
-                                <input type="number" name="price[]" class="form-control form-control-sm">
-                            </div>
                             <div class="form-group col-md-2">
+                                <lebel>Price</lebel>
+                                <input type="number" name="price[]" class="form-control form-control-sm" required>
+                            </div>
+                            <div class="form-group col-md-3">
                                 <lebel>Description</lebel>
-                                <input type="text" name="description[]" class="form-control form-control-sm">
+                                <input type="text" name="description[]" class="form-control form-control-sm" required>
                             </div>
 
-                            <div class="form-group col-md-1" style="padding-top: 24px;">
+                            <div class="form-group col-md-2" style="padding-top: 24px;">
                                 <span class="btn btn-success addeventmore"><i class="fa fa-plus-circle"></i></span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
-                        <a type="submit" style="color: azure" class="btn btn-primary">
+                    <div class="col-md-3">
+                        <button type="submit" class="btn btn-primary">
                             <i class="fas fa-plus-circle"></i>
                             <span>Store</span>
-                        </a>
+                        </button>
                     </div>
                 </div>
             </form>
@@ -93,7 +93,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-2">
                         <lebel>Special Items</lebel>
-                        <select name="special_item_id[]" class="js-example-basic-single form-control">
+                        <select name="special_item_id[]" class="form-control" required>
                             <option value="">Select Special Items</option>
                             @foreach ($specialItems as $specialItem)
                             <option value="{{$specialItem->id}}">{{$specialItem->name}}</option>
@@ -102,11 +102,11 @@
                     </div>
                     <div class="form-group col-md-1">
                         <lebel>Price</lebel>
-                        <input type="number" name="price[]" class="form-control form-control-sm">
+                        <input type="number" name="price[]"  class="form-control form-control-sm" required>
                     </div>
                     <div class="form-group col-md-2">
                         <lebel>Description</lebel>
-                        <input type="text" name="description[]" class="form-control form-control-sm">
+                        <input type="text" name="description[]" class="form-control form-control-sm" required>
                     </div>
                     <div class="form-group col-md-2" style="padding-top: 23px;">
                         <div class="form-row">

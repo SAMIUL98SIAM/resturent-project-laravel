@@ -31,7 +31,6 @@
                         <tr>
                             <th class="text-center">#</th>
                             <th class="text-center">Special Menu Name</th>
-                            <th class="text-center">Created At</th>
                             <th class="text-center">Actions</th>
                         </tr>
                     </thead>
@@ -39,22 +38,18 @@
                         @foreach ($assignMenuItems as $key=>$assignMenuItem)
                         <tr>
                             <td class="text-center text-muted">{{$key+1}}</td>
-
                             <td class="text-center">{{$assignMenuItem->special_menu->name}}</td>
-
-                            <td class="text-center">{{$assignMenuItem->created_at->diffForHumans()}}</td>
                             <td class="text-center">
-                                <a href="{{route('admin.food.special-items.edit',$assignMenuItem->special_menu_id)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"><span> Edit</span></i></a>
+                                <a href="{{route('admin.food.assign-menu-items.edit',$assignMenuItem->special_menu_id)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"><span> Edit</span></i></a>
 
-                                <button type="button" class="btn btn-danger btn-sm"onclick="deleteData({{ $assignMenuItem->special_menu_id }})"><i class="fas fa-trash-alt"></i><span>Delete</span></button>
+                                <a href="{{route('admin.food.assign-menu-items.show',$assignMenuItem->special_menu_id)}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"><span> Details</span></i></a>
+                                {{-- <button type="button" class="btn btn-danger btn-sm"onclick="deleteData({{ $assignMenuItem->special_menu_id }})"><i class="fas fa-trash-alt"></i><span>Delete</span></button>
                                 <form id="delete-form-{{ $assignMenuItem->special_menu_id }}"
                                 action="{{ route('admin.food.special-items.destroy',$assignMenuItem->special_menu_id) }}" method="POST"
                                 style="display: none;">
                                 @csrf()
                                 @method('DELETE')
-                                </form>
-
-
+                                </form> --}}
                             </td>
                         </tr>
                         @endforeach

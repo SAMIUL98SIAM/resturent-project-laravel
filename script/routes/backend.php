@@ -77,7 +77,10 @@ Route::resource('menus',MenuController::class)->except(['show']);
 Route::group(['as'=>'food.','prefix'=>'food'],function(){
     Route::resource('special-menus',SpecialMenuController::class)->except(['show']);
     Route::resource('special-items',SpecialItemController::class)->except(['show']);
-    Route::resource('assign-menu-items',AssignMenuItemController::class)->except(['show']);
+    Route::resource('assign-menu-items',AssignMenuItemController::class)->only(['index','create','store','destroy']);
+    Route::get('/assign-menu-items/show/{special_menu_id}', [AssignMenuItemController::class, 'show'])->name('assign-menu-items.show');
+    Route::get('/assign-menu-items/edit/{special_menu_id}', [AssignMenuItemController::class, 'edit'])->name('assign-menu-items.edit');
+    Route::post('/assign-menu-items/update/{special_menu_id}', [AssignMenuItemController::class, 'update'])->name('assign-menu-items.update');
 });
 
 

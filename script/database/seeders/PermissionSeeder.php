@@ -340,6 +340,13 @@ class PermissionSeeder extends Seeder
 
         Permission::updateOrCreate([
             'module_id' => $moduleAppAssignMenuItem->id ,
+            'name' => 'Edit Assign Menu Item' ,
+            'slug' => 'admin.food.assign-menu-items.show'
+        ]);
+
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppAssignMenuItem->id ,
             'name' => 'Delete Assign Menu Item' ,
             'slug' => 'admin.food.assign-menu-items.destroy'
         ]);
