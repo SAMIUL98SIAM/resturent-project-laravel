@@ -350,5 +350,94 @@ class PermissionSeeder extends Seeder
             'name' => 'Delete Assign Menu Item' ,
             'slug' => 'admin.food.assign-menu-items.destroy'
         ]);
+
+
+
+       //Categories
+       $moduleAppCategory = Module::updateOrCreate(['name' => 'Category Management']);
+       Permission::updateOrCreate([
+           'module_id' => $moduleAppCategory->id ,
+           'name' => 'Access Category' ,
+           'slug' => 'admin.blog.categories.index'
+       ]);
+
+       Permission::updateOrCreate([
+           'module_id' => $moduleAppCategory->id ,
+           'name' => 'Create Category' ,
+           'slug' => 'admin.blog.categories.create'
+       ]);
+
+       Permission::updateOrCreate([
+           'module_id' => $moduleAppCategory->id ,
+           'name' => 'Edit Category' ,
+           'slug' => 'admin.blog.categories.edit'
+       ]);
+
+       Permission::updateOrCreate([
+           'module_id' => $moduleAppCategory->id ,
+           'name' => 'Delete Category' ,
+           'slug' => 'admin.blog.categories.destroy'
+       ]);
+
+       //Tags
+       $moduleAppTag = Module::updateOrCreate(['name' => 'Tag Management']);
+       Permission::updateOrCreate([
+           'module_id' => $moduleAppTag->id ,
+           'name' => 'Access Tag' ,
+           'slug' => 'admin.blog.tags.index'
+       ]);
+
+       Permission::updateOrCreate([
+           'module_id' => $moduleAppTag->id ,
+           'name' => 'Create Tag' ,
+           'slug' => 'admin.blog.tags.create'
+       ]);
+
+       Permission::updateOrCreate([
+           'module_id' => $moduleAppTag->id ,
+           'name' => 'Edit Tag' ,
+           'slug' => 'admin.blog.tags.edit'
+       ]);
+
+       Permission::updateOrCreate([
+           'module_id' => $moduleAppTag->id ,
+           'name' => 'Delete Tag' ,
+           'slug' => 'admin.blog.tags.destroy'
+       ]);
+
+        //Posts
+        $moduleAppPost = Module::updateOrCreate(['name' => 'Post Management']);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppPost->id ,
+            'name' => 'Access Post' ,
+            'slug' => 'admin.blog.posts.index'
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppPost->id ,
+            'name' => 'Create Post' ,
+            'slug' => 'admin.blog.posts.create'
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppPost->id ,
+            'name' => 'Edit Post' ,
+            'slug' => 'admin.blog.posts.edit'
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppPost->id ,
+            'name' => 'Delete Post' ,
+            'slug' => 'admin.blog.posts.destroy'
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppPost->id ,
+            'name' => 'Show Post' ,
+            'slug' => 'admin.blog.posts.show'
+        ]);
+
+
+
     }
 }

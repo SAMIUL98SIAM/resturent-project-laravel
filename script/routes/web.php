@@ -39,6 +39,8 @@ Route::group(['as' => 'login.', 'prefix' => 'login'], function () {
 
     Route::get('/facebook', [LoginController::class, 'redirectToFacebook'])->name('facebook');
     Route::get('/facebook/callback', [LoginController::class, 'handleFacebookCallback'])->name('callback');
+
+
 });
 
 

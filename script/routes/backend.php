@@ -18,7 +18,9 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\StuffController;
 use App\Http\Controllers\Backend\FoodMenu\SpecialMenuController;
 use App\Http\Controllers\Backend\FoodMenu\SpecialItemController;
-use App\Models\FoodMenu\AssignMenuItem;
+use App\Http\Controllers\Backend\Blog\CategoryController;
+use App\Http\Controllers\Backend\Blog\PostController;
+use App\Http\Controllers\Backend\Blog\TagController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +75,14 @@ Route::resource('stuffs',StuffController::class);
 
 //Menu
 Route::resource('menus',MenuController::class)->except(['show']);
+
+
+Route::group(['as'=>'blog.','prefix'=>'blog'],function(){
+    Route::resource('categories',CategoryController::class);
+    Route::resource('tags', TagController::class);
+    Route::resource('posts', PostController::class);
+});
+
 
 Route::group(['as'=>'food.','prefix'=>'food'],function(){
     Route::resource('special-menus',SpecialMenuController::class)->except(['show']);
