@@ -24,10 +24,15 @@ Route::get('/reservation', [App\Http\Controllers\Frontend\Pages\ReservationContr
 Route::get('/stuff', [App\Http\Controllers\Frontend\Pages\StuffController::class, 'stuff'])->name('stuff');
 Route::get('/gallery', [App\Http\Controllers\Frontend\Pages\GalleryController::class, 'gallery'])->name('gallery');
 
-Route::get('/blog', [App\Http\Controllers\Frontend\Blog\BlogController::class, 'blog'])->name('blog');
-Route::get('/blog-detail', [App\Http\Controllers\Frontend\Blog\BlogDetailController::class, 'blog_detail'])->name('blog-detail');
+
+// Route::get('/blog-detail', [App\Http\Controllers\Frontend\Blog\BlogDetailController::class, 'blog_detail'])->name('blog-detail');
 
 Route::get('/contact', [App\Http\Controllers\Frontend\ContactController::class, 'contact'])->name('contact');
+
+Route::get('/blog', [App\Http\Controllers\Frontend\Blog\BlogController::class, 'blog'])->name('blog');
+Route::get('/blog/details/{slug}', [App\Http\Controllers\Frontend\Blog\BlogDetailController::class,'blog_details'])->name('blog.details');
+Route::get('/blog/categories/{slug}', [App\Http\Controllers\Frontend\Blog\BlogDetailController::class,'blog_categories'])->name('blog.categories');
+Route::get('/blog/tags/{slug}', [App\Http\Controllers\Frontend\Blog\BlogDetailController::class,'blog_tags'])->name('blog.tags');
 
 
 Route::group(['as' => 'login.', 'prefix' => 'login'], function () {

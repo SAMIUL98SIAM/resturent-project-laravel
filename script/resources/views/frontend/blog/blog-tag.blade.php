@@ -20,13 +20,16 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="heading-title text-center">
-                    <h2>Blog</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+                    <span>Tag</span>
+                    <h3>{{ $tag->name }}</h3>
+                    @if($tag->description)
+                    <p>{{ $tag->description }}</p>
+                    @endif
                 </div>
             </div>
         </div>
         <div class="row">
-            @foreach ($recentPosts as $post)
+            @foreach ($posts as $post)
             <div class="col-lg-4 col-md-6 col-12">
                 <div class="blog-box-inner">
                     <div class="blog-img-box">
@@ -39,8 +42,8 @@
                             <li>|</li>
                             <li><span>{{ $post->created_at->format('M d, Y') }}</span></li>
                         </ul>
-                        <p>{{ Str::limit($post->description, 50) }} </p>
-                        <p>{{ Str::limit($post->description_ii, 20) }}</p>
+                        <p>{{ Str::limit($post->description, 80) }} </p>
+
 
                         <a class="btn btn-lg btn-circle btn-outline-new-white" href="{{ route('blog.details', ['slug' => $post->slug]) }}">Read More</a>
                     </div>
@@ -49,7 +52,7 @@
             @endforeach
         </div>
         <div class="row text-center pt-5 border-top">
-            {{ $recentPosts->links() }}
+            {{ $posts->links() }}
         </div>
     </div>
 </div>

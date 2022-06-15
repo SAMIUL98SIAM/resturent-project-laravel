@@ -21,7 +21,6 @@
             <div class="col-lg-12">
                 <div class="heading-title text-center">
                     <h2>Blog</h2>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
                 </div>
             </div>
         </div>
@@ -30,27 +29,25 @@
                 <div class="blog-inner-details-page">
                     <div class="blog-inner-box">
                         <div class="side-blog-img">
-                            <img class="img-fluid" src="{{asset('frontend/images/inner-blog-img.jpg')}}" alt="">
-                            <div class="date-blog-up">
-                                27 Fab
-                            </div>
+                            <img class="img-fluid" src="{{asset($post->image)}}" alt="">
                         </div>
                         <div class="inner-blog-detail details-page">
-                            <h3>Duis feugiat neque sed dolor cursus, sed lacinia nisl pretium.</h3>
+                            <h3>{{ $post->title }}</h3>
                             <ul>
-                                <li><i class="zmdi zmdi-account"></i>Posted By : <span>Rubel Ahmed</span></li>
+                                <li><i class="zmdi zmdi-account"></i>Posted By : <span>{{ $post->user->name }}</span></li>
                                 <li>|</li>
-                                <li><i class="zmdi zmdi-time"></i>Time : <span>11.30 am</span></li>
+                                <li><i class="zmdi zmdi-time"></i>Time : <span>{{ $post->created_at->format('M d, Y') }}</span></li>
                             </ul>
-                            <p>Vestibulum quis ultricies enim. Quisque eu sapien a erat congue lacinia bibendum ac massa. Morbi vehicula aliquet libero sit amet dictum. Integer vel mauris non magna consequat porttitor. Nulla facilisi. Suspendisse posuere, elit eu fringilla congue, turpis magna tempor odio, a placerat magna tortor a mauris. Phasellus lobortis turpis dui, eget mollis ex vestibulum auctor. Nunc viverra leo ut accumsan aliquet. Maecenas aliquam dolor eget felis bibendum blandit.</p>
-                            <p>Nunc iaculis, massa eget pellentesque mollis, nulla mauris aliquam eros, vitae condimentum leo nisl ut purus. Etiam nibh diam, vehicula non tincidunt id, consequat nec ex. Praesent vulputate sapien non tellus ultrices hendrerit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus pellentesque arcu erat. Curabitur dapibus fringilla porta. Sed in neque sit amet ante feugiat blandit. Nulla fringilla purus diam, cursus venenatis diam luctus nec.</p>
+                            <p>{{$post->description}}</p>
+
                             <blockquote>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non feugiat lacus. Nunc nisi velit, consectetur vitae ex porttitor, placerat scelerisque mauris. Phasellus sit amet tincidunt metus, quis tempus ex. Quisque in lorem ut mi ullamcorper suscipit eu nec purus. Nam maximus sagittis iaculis.</p>
+                                <p>{{$post->description_ii}}</p>
                             </blockquote>
-                            <p>Vestibulum quis ultricies enim. Quisque eu sapien a erat congue lacinia bibendum ac massa. Morbi vehicula aliquet libero sit amet dictum. Integer vel mauris non magna consequat porttitor. Nulla facilisi. Suspendisse posuere, elit eu fringilla congue, turpis magna tempor odio, a placerat magna tortor a mauris.</p>
+                            <p>{{$post->description_i}}.</p>
                         </div>
                     </div>
-                    <div class="blog-comment-box">
+
+                    {{-- <div class="blog-comment-box">
                         <h3>Comments</h3>
                         <div class="comment-item">
                             <div class="comment-item-left">
@@ -126,7 +123,7 @@
                                 </div>
                             </form>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 
@@ -142,80 +139,37 @@
                     <h3>Categories</h3>
                     <div class="blog-categories">
                         <ul>
-                            <li><a href="#"><span>Food</span></a></li>
-                            <li><a href="#"><span>Pizza</span></a></li>
-                            <li><a href="#"><span>Drink</span></a></li>
-                            <li><a href="#"><span>Lorem Sit</span></a></li>
-                            <li><a href="#"><span>Burger</span></a></li>
-                            <li><a href="#"><span>Music</span></a></li>
+                            @foreach($categories as $category)
+                            <li><a href="{{ route('blog.categories', ['slug' => $category->slug]) }}"><span>{{$category->name}}</span></a></li>
+                            @endforeach
                         </ul>
                     </div>
                     <h3>Recent Post</h3>
                     <div class="post-box-blog">
                         <div class="recent-post-box">
+                            @foreach($posts as $post)
                             <div class="recent-box-blog">
                                 <div class="recent-img">
-                                    <img class="img-fluid" src="{{asset('frontend/images/post-img-01.jpg')}}" alt="">
+                                    <img class="img-fluid" width="70px" src="{{asset($post->image)}}" alt="">
                                 </div>
                                 <div class="recent-info">
                                     <ul>
-                                        <li><i class="zmdi zmdi-account"></i>Posted By : <span>Rubel Ahmed</span></li>
+                                        <li><i class="zmdi zmdi-account"></i>Posted By : <span>{{ $post->user->name }}<</span></li>
                                         <li>|</li>
-                                        <li><i class="zmdi zmdi-time"></i>Time : <span>11.30 am</span></li>
+                                        <li><i class="zmdi zmdi-time"></i>Time : <span>{{ $post->created_at->format('M d, Y') }}</span></li>
                                     </ul>
-                                    <h4>Duis feugiat neque sed dolor cursus, sed lacinia nisl pretium.</h4>
+                                    <h4><a href="{{ route('blog.details', ['slug' => $post->slug]) }}">{{ Str::limit($post->description, 50) }}</a> .</h4>
                                 </div>
                             </div>
-                            <div class="recent-box-blog">
-                                <div class="recent-img">
-                                    <img class="img-fluid" src="{{asset('frontend/images/post-img-02.jpg')}}" alt="">
-                                </div>
-                                <div class="recent-info">
-                                    <ul>
-                                        <li><i class="zmdi zmdi-account"></i>Posted By : <span>Rubel Ahmed</span></li>
-                                        <li>|</li>
-                                        <li><i class="zmdi zmdi-time"></i>Time : <span>11.30 am</span></li>
-                                    </ul>
-                                    <h4>Duis feugiat neque sed dolor cursus, sed lacinia nisl pretium.</h4>
-                                </div>
-                            </div>
-                            <div class="recent-box-blog">
-                                <div class="recent-img">
-                                    <img class="img-fluid" src="{{asset('frontend/images/post-img-03.jpg')}}" alt="">
-                                </div>
-                                <div class="recent-info">
-                                    <ul>
-                                        <li><i class="zmdi zmdi-account"></i>Posted By : <span>Rubel Ahmed</span></li>
-                                        <li>|</li>
-                                        <li><i class="zmdi zmdi-time"></i>Time : <span>11.30 am</span></li>
-                                    </ul>
-                                    <h4>Duis feugiat neque sed dolor cursus, sed lacinia nisl pretium.</h4>
-                                </div>
-                            </div>
-                            <div class="recent-box-blog">
-                                <div class="recent-img">
-                                    <img class="img-fluid" src="{{asset('frontend/images/post-img-01.jpg')}}" alt="">
-                                </div>
-                                <div class="recent-info">
-                                    <ul>
-                                        <li><i class="zmdi zmdi-account"></i>Posted By : <span>Rubel Ahmed</span></li>
-                                        <li>|</li>
-                                        <li><i class="zmdi zmdi-time"></i>Time : <span>11.30 am</span></li>
-                                    </ul>
-                                    <h4>Duis feugiat neque sed dolor cursus, sed lacinia nisl pretium.</h4>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <h3>Recent Tag</h3>
                     <div class="blog-tag-box">
                         <ul class="list-inline tag-list">
-                            <li class="list-inline-item"><a href="#">Food</a></li>
-                            <li class="list-inline-item"><a href="#">Drink</a></li>
-                            <li class="list-inline-item"><a href="#">Nature</a></li>
-                            <li class="list-inline-item"><a href="#">Italian</a></li>
-                            <li class="list-inline-item"><a href="#">Bootstrap4</a></li>
-                            <li class="list-inline-item"><a href="#">Fashion</a></li>
+                            @foreach($tags as $tag)
+                            <li class="list-inline-item"><a href="{{ route('blog.tags', ['slug' => $tag->slug]) }}">{{$tag->name}}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
