@@ -23,6 +23,7 @@ class CreatePostsTable extends Migration
             $table->longText('description_ii')->nullable();
             $table->integer('category_id')->unsigned();
             $table->integer('user_id')->unsigned();
+            $table->integer('view_count')->default(0);
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });

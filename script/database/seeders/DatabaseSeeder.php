@@ -26,6 +26,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TagSeeder::class);
 
         Category::factory()->count(5)->create();
-        Post::factory()->count(50)->create();
+        Post::factory()->count(45)->create();
     }
 }

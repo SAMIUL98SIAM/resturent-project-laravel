@@ -7,6 +7,7 @@ use App\Models\Logo;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 
 class BlogDetailController extends Controller
@@ -20,6 +21,13 @@ class BlogDetailController extends Controller
 
         $categories = Category::all();
         $tags = Tag::all();
+
+        // Increase View count
+        $postKey = 'post_'.$post->id;
+        if(!Session::has($postKey)){
+            $post->increment('view_count');
+            Session::put($postKey, 1);
+        }
 
         if($post){
             return view('frontend.blog.blog-detail', compact(['post', 'posts', 'categories', 'tags']),$data);

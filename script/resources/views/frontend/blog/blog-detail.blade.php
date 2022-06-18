@@ -350,6 +350,29 @@
         x.style.display = "none";
       }
     }
+
+
+    // Social Share links.
+    const gmailBtn = document.getElementById('gmail-btn');
+    const facebookBtn = document.getElementById('facebook-btn');
+    const gplusBtn = document.getElementById('gplus-btn');
+    const linkedinBtn = document.getElementById('linkedin-btn');
+    const twitterBtn = document.getElementById('twitter-btn');
+    const whatsappBtn = document.getElementById('whatsapp-btn');
+    const socialLinks = document.getElementById('social-links');
+
+    // posturl posttitle
+    let postUrl = encodeURI(document.location.href);
+    let postTitle = encodeURI('{{$post->title}}');
+
+    facebookBtn.setAttribute("href",`https://www.facebook.com/sharer.php?u=${postUrl}`);
+    twitterBtn.setAttribute("href", `https://twitter.com/share?url=${postUrl}&text=${postTitle}`);
+    linkedinBtn.setAttribute("href", `https://www.linkedin.com/shareArticle?url=${postUrl}&title=${postTitle}`);
+    whatsappBtn.setAttribute("href",`https://wa.me/?text=${postTitle} ${postUrl}`);
+    gmailBtn.setAttribute("href",`https://mail.google.com/mail/?view=cm&su=${postTitle}&body=${postUrl}`);
+    gplusBtn.setAttribute("href",`https://plus.google.com/share?url=${postUrl}`);
+
+
 </script>
 
 
