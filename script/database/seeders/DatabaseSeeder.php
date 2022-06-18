@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Category;
+use App\Models\Post;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,5 +24,8 @@ class DatabaseSeeder extends Seeder
         $this->call(SpecialMenuSeeder::class);
         $this->call(SpecialItemSeeder::class);
         $this->call(TagSeeder::class);
+
+        Category::factory()->count(5)->create();
+        Post::factory()->count(50)->create();
     }
 }

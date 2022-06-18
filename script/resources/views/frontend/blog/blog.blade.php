@@ -40,7 +40,6 @@
                             <li><span>{{ $post->created_at->format('M d, Y') }}</span></li>
                         </ul>
                         <p>{{ Str::limit($post->description, 50) }} </p>
-                        <p>{{ Str::limit($post->description_ii, 20) }}</p>
 
                         <a class="btn btn-lg btn-circle btn-outline-new-white" href="{{ route('blog.details', ['slug' => $post->slug]) }}">Read More</a>
                     </div>

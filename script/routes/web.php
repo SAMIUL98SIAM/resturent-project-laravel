@@ -34,6 +34,10 @@ Route::get('/blog/details/{slug}', [App\Http\Controllers\Frontend\Blog\BlogDetai
 Route::get('/blog/categories/{slug}', [App\Http\Controllers\Frontend\Blog\BlogDetailController::class,'blog_categories'])->name('blog.categories');
 Route::get('/blog/tags/{slug}', [App\Http\Controllers\Frontend\Blog\BlogDetailController::class,'blog_tags'])->name('blog.tags');
 
+Route::post('/comment/{post}', [App\Http\Controllers\Frontend\Blog\CommentController::class,'store'])->name('comment.store');
+Route::post('/comment-reply/{comment}', [App\Http\Controllers\Frontend\Blog\CommentReplyController::class,'store'])->name('reply.store');
+
+Route::post('/like-post/{post}', [ App\Http\Controllers\Frontend\Blog\LikeController::class,'likePost'])->name('post.like');
 
 Route::group(['as' => 'login.', 'prefix' => 'login'], function () {
     Route::get('/github', [LoginController::class, 'redirectToGithub'])->name('github');

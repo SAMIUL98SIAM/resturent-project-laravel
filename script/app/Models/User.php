@@ -42,9 +42,29 @@ class User extends Authenticatable
     //         ->singleFile();
     // }
 
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function replies(){
+        return $this->hasMany(CommentReply::class);
+    }
+
     public function role()
     {
         return $this->belongsTo(Role::class);
+    }
+
+    // Many to many
+    public function likedPosts()
+    {
+        return $this->belongsToMany(Post::class)->withTimestamps();
     }
 
     public function hasPermission($permission): bool

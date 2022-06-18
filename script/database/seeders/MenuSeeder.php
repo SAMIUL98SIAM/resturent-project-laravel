@@ -263,18 +263,12 @@ class MenuSeeder extends Seeder
             'url' => "/blog"
         ]);
 
-        $frontendMenu->menuItems()->updateOrCreate([
-            'type' => 'item',
-            'parent_id' => null,
-            'order' => 10,
-            'title' => 'Blog Single',
-            'url' => "/blog-detail"
-        ]);
+
 
         $frontendMenu->menuItems()->updateOrCreate([
             'type' => 'item',
             'parent_id' => null,
-            'order' => 11,
+            'order' => 10,
             'title' => 'Contact',
             'url' => "/contact"
         ]);
