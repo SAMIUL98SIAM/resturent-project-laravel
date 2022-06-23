@@ -16,7 +16,7 @@ use App\Http\Controllers\Auth\LoginController;
 |
 */
 
-Route::get('/', [App\Http\Controllers\Frontend\DashboardController::class, 'dashboard'])->name('dashboard');
+Route::get('/', [App\Http\Controllers\Frontend\DashboardController::class, 'index'])->name('index');
 Route::get('/menu', [App\Http\Controllers\Frontend\MenuController::class, 'menu'])->name('menu');
 Route::get('/about', [App\Http\Controllers\Frontend\AboutController::class, 'about'])->name('about');
 
@@ -38,6 +38,20 @@ Route::post('/comment/{post}', [App\Http\Controllers\Frontend\Blog\CommentContro
 Route::post('/comment-reply/{comment}', [App\Http\Controllers\Frontend\Blog\CommentReplyController::class,'store'])->name('reply.store');
 
 Route::post('/like-post/{post}', [ App\Http\Controllers\Frontend\Blog\LikeController::class,'likePost'])->name('post.like');
+
+
+
+Route::get('/customer-login', [App\Http\Controllers\Frontend\Auth\LoginController::class, 'index'])->name('customer.login');
+
+Route::get('/customer-signup', [App\Http\Controllers\Frontend\Auth\RegistrationController::class, 'index'])->name('customer.signup');
+Route::post('/customer-signup-store', [App\Http\Controllers\Frontend\Auth\RegistrationController::class, 'store'])->name('customer.signup.store');
+
+
+Route::get('/email-verify', [App\Http\Controllers\Frontend\Auth\LoginController::class, 'emailVerify'])->name('customer.email_verify');
+Route::post('/email-verify-store', [App\Http\Controllers\Frontend\Auth\LoginController::class, 'emailVerifyStore'])->name('customer.email_verify_store');
+
+
+
 
 Route::group(['as' => 'login.', 'prefix' => 'login'], function () {
     Route::get('/github', [LoginController::class, 'redirectToGithub'])->name('github');

@@ -24,6 +24,32 @@ class LoginController extends Controller
     |
     */
 
+    public function login(Request $request)
+    {
+        $this->validate($request,[
+            'email'=>'required',
+            'password'=>'required'
+        ]);
+
+        $email = $request->email;
+        $password = $request->password ;
+        $validData = User::where('email',$email)->first();
+        $password_check = password_verify($password,@$validData->password);
+        if ($password_check == false) {
+            notify()->error('Email or Password does not match','Error');
+            return redirect()->back();
+        }
+        elseif($validData->status==0)
+        {
+             notify()->error('Sorry! your are not verified yet','Error');
+             return redirect()->back();
+        }
+        if(Auth::attempt(['email'=>$email,'password'=>$password])) {
+            return redirect()->route('customer.dashboard');
+        }
+    }
+
+
     use AuthenticatesUsers;
 
     /**
@@ -52,78 +78,5 @@ class LoginController extends Controller
         // Show greetings.
         notify()->success("Hey $user->name, Welcome Back!",'Success');
     }
-
-
-    // // Facebook login
-    // public function redirectToFacebook()
-    // {
-    //     return Socialite::driver('facebook')->redirect();
-    // }
-    // public function handleFacebookCallback(Request $request)
-    // {
-    //     $user = Socialite::driver('facebook')->user();
-
-    //     $this->_registerOrLoginUser($user);
-    //     // Return home after login
-    //     //notify()->success('You have successfully logged in with '.$user->name.' ','Success');
-    //     return redirect()->route('admin.dashboard');
-    // }
-
-    // // Github login
-    // public function redirectToGithub()
-    // {
-    //     return Socialite::driver('github')->redirect();
-    // }
-    // public function handleGithubCallback(Request $request)
-    // {
-    //     $user = Socialite::driver('github')->user();
-
-    //     $this->_registerOrLoginUser($user);
-    //     // Return home after login
-    //     notify()->success('You have successfully logged in with '.$user->name.' ','Success');
-    //     return redirect()->route('admin.dashboard');
-    // }
-
-
-    // // // Google login
-    // public function redirectToGoogle()
-    // {
-    //     return Socialite::driver('google')->redirect();
-    // }
-    // public function handleGoogleCallback(Request $request)
-    // {
-    //     $user = Socialite::driver('google')->user();
-
-    //     $this->_registerOrLoginUser($user);
-    //     // Return home after login
-    //     notify()->success('You have successfully logged in with '.$user->name.' ','Success');
-    //     return redirect()->route('admin.dashboard');
-    // }
-
-    // public function  _registerOrLoginUser($data)
-    // {
-    //     //Find existing user.
-    //     $user = User::whereEmail($data->getEmail())->first();
-
-    //     if (!$user) {
-    //         $user = new User();
-    //         $user->role_id = Role::where('slug','manager')->first()->id;
-    //         $user->name = $data->name;
-    //         $user->email = $data->email;
-    //         $user->status = true;
-    //         // if($data->file('image')){
-    //         //     $file = $data->file('image');
-    //         //     $filename = date('YmdHi').$file->getClientOriginalName();
-    //         //     $file->move(('uploads/user_images'),$filename);
-    //         //     $user['image'] = $filename;
-    //         // }
-    //         $user->save();
-
-    //     }
-    //     Auth::login($user);
-    // }
-
-
-
 
 }

@@ -17,12 +17,12 @@ class CustomerMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check()&& Auth::user()->usertype=='admin')
+        if(Auth::check()&& Auth::user()->usertype=='customer')
         {
             return $next($request);
         }
         else {
-            return redirect()->back();
+            return redirect()->route('customer.login');
         }
     }
 }
