@@ -253,7 +253,7 @@
                     <section class="commentform-area pb-120 pt-80 mb-100">
                         @guest
                             <div class="container">
-                                <h4>Please Sign in to post comments - <a href="{{route('login')}}">Sing in</a> or <a href="{{route('register')}}">Register</a></h4>
+                                <h4>Please Sign in to post comments - <a href="{{route('customer.login')}}">Sign in</a> or <a href="{{route('customer.signup')}}">Register</a></h4>
                             </div>
                         @else
                         <div class="container">

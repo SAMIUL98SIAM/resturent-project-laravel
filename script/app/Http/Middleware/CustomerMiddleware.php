@@ -22,7 +22,7 @@ class CustomerMiddleware
             return $next($request);
         }
         else {
-            return redirect()->route('customer.login');
+            return redirect()->back();
         }
     }
 }

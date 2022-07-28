@@ -1,9 +1,12 @@
 <?php
 
+use App\Events\Message;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Auth\LoginController;
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Frontend\ChatController;
+use Illuminate\Support\Facades\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,10 +37,9 @@ Route::get('/blog/details/{slug}', [App\Http\Controllers\Frontend\Blog\BlogDetai
 Route::get('/blog/categories/{slug}', [App\Http\Controllers\Frontend\Blog\BlogDetailController::class,'blog_categories'])->name('blog.categories');
 Route::get('/blog/tags/{slug}', [App\Http\Controllers\Frontend\Blog\BlogDetailController::class,'blog_tags'])->name('blog.tags');
 
-Route::post('/comment/{post}', [App\Http\Controllers\Frontend\Blog\CommentController::class,'store'])->name('comment.store');
-Route::post('/comment-reply/{comment}', [App\Http\Controllers\Frontend\Blog\CommentReplyController::class,'store'])->name('reply.store');
-
-Route::post('/like-post/{post}', [ App\Http\Controllers\Frontend\Blog\LikeController::class,'likePost'])->name('post.like');
+Route::post('/comment/{post}', [App\Http\Controllers\Frontend\Blog\CommentController::class,'store'])->name('comment.store')->middleware(['auth','verified']);
+Route::post('/comment-reply/{comment}', [App\Http\Controllers\Frontend\Blog\CommentReplyController::class,'store'])->name('reply.store')->middleware(['auth','verified']);
+Route::post('/like-post/{post}', [ App\Http\Controllers\Frontend\Blog\LikeController::class,'likePost'])->name('post.like')->middleware(['auth','verified']);
 
 
 
@@ -51,6 +53,14 @@ Route::get('/email-verify', [App\Http\Controllers\Frontend\Auth\LoginController:
 Route::post('/email-verify-store', [App\Http\Controllers\Frontend\Auth\LoginController::class, 'emailVerifyStore'])->name('customer.email_verify_store');
 
 
+
+
+Route::get('/chat', [ChatController::class, 'index'])->name('chat');
+
+Route::post('/send-message',function (Request $request){
+    event(new Message($request->input('name'),$request->input('message')));
+    return ["success"=> true];
+});
 
 
 Route::group(['as' => 'login.', 'prefix' => 'login'], function () {

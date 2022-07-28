@@ -22,6 +22,8 @@
                             </form>
                         </ul>
                     </li>
+                    @elseif(@Auth::user()->id != Null && @Auth::user()->usertype=='admin')
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">You logged as an Admin, Go to your Dashbard</a>
                     @else
                     <li class="nav-item"><a class="nav-link" href="{{route('customer.login')}}">Login</a></li>
                     @endif
